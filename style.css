@@ -371,7 +371,7 @@ body {
 }
 
 .viewer-bar {
-    width: 33.3333%;
+    width: 22%;
 }
 
 .switch {
@@ -430,7 +430,7 @@ input:checked + .slider:before {
 }
 
 .video-bar {
-    width: 100%;
+    width: 150%;
     margin-top: -60px;
     margin-left: 0px;
     margin-right: 0px;
@@ -696,6 +696,23 @@ video {
     z-index: 1;
 }
 
+iframe {
+    /* opacity: 0; */
+    display: none;
+    /* transition: opacity 0.5s ease; Default transition effect */
+    width: 960px;
+    height: 540px;
+    border: none;
+}
+  
+iframe.show {
+    /* opacity: 1; */
+    display: block;
+}
+
+iframe:not(.show) {
+    display: none;
+  }
 
 @media only screen and (max-width: 950px) {
     .new-line-small-device {
@@ -748,4 +765,85 @@ video {
     .slide-arrow {
         margin-top: 15px;
       }
+}
+
+/* Style the custom dropdown container */
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Style the default selected option */
+.custom-dropdown .dropdown-btn {
+    background-color: #2196F3;
+}
+  
+/* Style the dropdown button */
+.dropdown-btn {
+    font-family: sans-serif;
+    color: #fff;
+    position: relative;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.dropdown-btn:hover   {
+    background-color: #0b7dda;
+}
+  
+/* Style the selected option text */
+#selected-option {
+    margin-right: 10px;
+}
+  
+/* Style the down arrow icon */
+.arrow {
+    font-size: 10px;
+}
+  
+/* Style the dropdown menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 60%; /* Position the menu just below the button */
+    left: 35%;
+    /* margin-top: 5px; Add some margin to separate the menu from the button */
+    z-index: 1;
+    background-color: #ffffff;
+    /* border-radius: 10px; */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 0;
+    animation: fadeInDown 0.3s ease;
+}
+
+/* Style the dropdown menu items (options) */
+.dropdown-menu li {
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #2196F3;
+  }
+  
+  /* Highlight the option on hover */
+  .dropdown-menu li:hover {
+    background-color: #e5e5e5;
+  }
+  
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+  
+/* Show the dropdown menu when the button is clicked */
+.show {
+    display: block;
 }

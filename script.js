@@ -1,76 +1,102 @@
+var iframe_names = [['colormug-black-sem', 'colormug-white-sem', 'colormug-blue-sem'],
+                    ['coords-ethernet-sem', 'coords-cord-sem'],
+                    ];
+var iframe_names_geo = [['colormug-black-geo', 'colormug-white-geo', 'colormug-blue-geo'],
+                        ['coords-ethernet-geo', 'coords-cord-geo']];
+var iframes = [];
+var curr_type = 0;
+var selected_option = 0;
 
-var video_names = ['blackmug', 'bouquet','figurines','kitchen', 'donuts', 'teatime', 'bookstore', 'grocery', 'garden', 'shoes'];
-var download_paths = [
-  'data/high_res/black_mug_geom_grasps.mp4',
-  'data/high_res/bouquet.mp4',
-  'data/high_res/figurines.mp4',
-  'data/high_res/kitchen.mp4', 
-  'data/high_res/donuts.mp4', 
-  'data/high_res/teatime.mp4',
-  'data/high_res/bookstore.mp4',
-  'data/high_res/veggie_aisle.mp4',
-  'data/high_res/sunnyside.mp4',
-  'data/high_res/shoe_rack.mp4'
+const optionsSets = [
+  ['Black mug; Handle', 'White mug; Handle', 'Blue mug; Handle'],
+  ['Ethernet; Port', 'Power Strip; Cord']
 ];
-var videos = [];
-
-var video_width = 960;
-const VIDEO_ASPECT_RATIO = 16.0 / 9.0;
 
 $(function() {
-    var canvas = document.getElementById('canvas');
-    var ctx = canvas.getContext('2d');
+  current_iframe_idx = 0;
 
-    current_video_idx = 0;
+  thumbnails = [
+    document.getElementById('thumb-0'),
+    document.getElementById('thumb-1'),
+    // document.getElementById('thumb-2'),
+    // document.getElementById('thumb-3'),
+    // document.getElementById('thumb-4'),
+    // document.getElementById('thumb-5'),
+    // document.getElementById('thumb-6'),
+    // document.getElementById('thumb-7'),
+    // document.getElementById('thumb-8'),
+  ];
+  for (var i = 0; i < thumbnails.length; i++) {
+    thumbnails[i].addEventListener('click', showIframe.bind(this, i, false));
+    thumbnails[i].addEventListener('click', updateOptions.bind(this));
+    thumbnails[i].addEventListener('click', selectOption.bind(this, optionsSets[i][0], 0));
 
-    thumbnails = [
-      document.getElementById('thumb-0'),
-      document.getElementById('thumb-1'),
-      document.getElementById('thumb-2'),
-      document.getElementById('thumb-3'),
-      document.getElementById('thumb-4'),
-      document.getElementById('thumb-5'),
-      document.getElementById('thumb-6'),
-      document.getElementById('thumb-7'),
-      document.getElementById('thumb-8'),
-    ];
-    for (var i = 0; i < thumbnails.length; i++) {
-      thumbnails[i].addEventListener('click', change_video_index.bind(this, i));
-    }
-    
-    var canvas_overlay = document.getElementById('canvas-overlay');
-    var ctx_overlay = canvas_overlay.getContext('2d');
-
-    if (videos.length == 0) {
-      load_videos();
-    };
-
-    (function loop() {
-      video = videos[current_video_idx]
-      ctx.drawImage(video, 0, 0, 960, 540, 0, 0, video_width, video_width/VIDEO_ASPECT_RATIO);
-      ctx_overlay.drawImage(video, 960, 0, 960, 540, 0, 0, video_width, video_width/VIDEO_ASPECT_RATIO);
-      setTimeout(loop, 1000 / 60); // drawing at 30fps
-      set_play_pause_icon();
-    })();
-
-  });
-  
-function change_video_index (idx) {
-  thumbnails[idx].classList.add("active-btn");
-  if (current_video_idx != idx) {
-    thumbnails[current_video_idx].classList.remove("active-btn");
   }
-  videos[current_video_idx].pause()
-  current_video_idx = idx;
-  current_video = videos[current_video_idx]
-  current_video.currentTime = 0;
-  current_video.play();
-  set_play_pause_icon();
+  
+  if (iframes.length == 0) {
+    load_iframes();
+  };
+});
+
+function load_iframes() {
+  var geo = [];
+  var sem = [];
+  for (var i = 0; i < iframe_names.length; i++) {
+    var geo_temp = [];
+    var sem_temp = [];
+    for (var j = 0; j < iframe_names[i].length; j++) {
+      sem_temp.push(document.getElementById(iframe_names[i][j])); 
+      geo_temp.push(document.getElementById(iframe_names_geo[i][j])); 
+    }
+    sem.push(sem_temp); 
+    geo.push(geo_temp); 
+  }
+  iframes.push(sem);
+  iframes.push(geo);
+}
+
+function showIframe(index, fade=false) {
+  thumbnails[index].classList.add("active-btn");
+  if (current_iframe_idx != index) {
+    thumbnails[current_iframe_idx].classList.remove("active-btn");
+  }
+  current_iframe_idx = index;
+  // Hide all iframes
+  for (let i = 0; i < iframes[0].length; i++) {
+    for (let j = 0; j < iframes[0][i].length; j++){
+      iframes[0][i][j].classList.remove('show');
+      iframes[1][i][j].classList.remove('show');
+    }
+  }
+
+  // Show the selected iframe
+  console.log(curr_type, index, selected_option);
+  const selectedIframe = iframes[curr_type][index][selected_option];
+  if (fade) {
+    // With transition
+    fadeIn(selectedIframe);
+  } else {
+    // Without transition
+    selectedIframe.classList.add('show');
+  }
+
+  // thumbnails[index].classList.add("active-btn");
+  // if (current_iframe_idx != index) {
+  //   thumbnails[current_iframe_idx].classList.remove("active-btn");
+  // }
+  // current_iframe_idx = index;
+  // // Hide all iframes
+  // for (let i = 0; i < iframes.length; i++) {
+  //   iframes[i].classList.remove('show');
+  // }
+
+  // // Show the selected iframe
+  // iframes[index].classList.add('show');
 }
 
 function fullscreen() {
-  current_video = videos[current_video_idx]
-  current_video.style.visibility = "visible";
+  current_iframe = iframes[curr_type][current_iframe_idx][selected_option]
+  current_iframe.style.visibility = "visible";
   const fullscreenElement =
     document.fullscreenElement ||
     document.mozFullScreenElement ||
@@ -79,16 +105,8 @@ function fullscreen() {
   if (fullscreenElement) {
     exitFullscreen();
   } else {
-    launchIntoFullscreen(current_video);
+    launchIntoFullscreen(current_iframe);
   }
-}
-
-function download() {
-  current_video = videos[current_video_idx]
-  var link = document.createElement('a');
-  link.download = video_names[current_video_idx] + '.mp4';
-  link.href = download_paths[current_video_idx];
-  link.click();
 }
 
 function launchIntoFullscreen(element) {
@@ -127,104 +145,118 @@ function exitHandler()
 {
  if (!document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement)
  {
-  current_video = videos[current_video_idx]
-  current_video.style.visibility = "hidden";
+  current_iframe = iframes[curr_type][current_iframe_idx][selected_option];
+  current_iframe.style.visibility = "visible";
  }
-}
-
-function load_videos() {
-  for (var i = 0; i < video_names.length; i++) {
-    videos.push(document.getElementById(video_names[i])); 
-  }
-}
-
-function set_play_pause_icon() {
-  button = document.getElementById('play-btn')
-  current_video = videos[current_video_idx]
-  if (current_video.paused) {
-    button.classList.remove("fa-pause");
-    button.classList.add("fa-play");
-  } else {
-    button.classList.add("fa-pause");
-    button.classList.remove("fa-play");
-  }
-}
-
-function play_pause() {
-  current_video = videos[current_video_idx]
-  if (current_video.paused) {
-    current_video.play();
-  } else {
-    current_video.pause();
-  }
-  set_play_pause_icon();
-}
-
-function resize_canvas() {
-  var canvas = document.getElementById('canvas');
-  var canvas_overlay = document.getElementById('canvas-overlay');
-  var main_results = document.getElementById('main-results');
-
-  var width = main_results.offsetWidth;
-  var height = width / VIDEO_ASPECT_RATIO;
-
-  main_results.style.height = height;
-
-  video_width = width;
-  canvas.width = width;
-  canvas.height = height;
-  canvas.style.width = width;
-  canvas.style.height = height;
-  canvas_overlay.width = width;
-  canvas_overlay.height = height;
-  canvas_overlay.style.width = width;
-  canvas_overlay.style.height = height;
 }
 
 window.onload = function() {
   const root = document.documentElement;
-  const checkbox = document.getElementById('opacity-toggle')
-
-  load_videos();
+  const checkbox = document.getElementById('opacity-toggle');
+  if (iframes.length == 0) {
+    load_iframes();
+  };
   checkbox.addEventListener('change', (event) => {
     if (event.currentTarget.checked) {
-      root.style.setProperty("--opacity", `100%`);
+      //Semantic
+      curr_type = 0;
+      showIframe(current_iframe_idx);
+      // root.style.setProperty("--opacity", `100%`);
     } else {
-      root.style.setProperty("--opacity", `0%`);
+      // Geometric
+      curr_type = 1;
+      showIframe(current_iframe_idx);
+      // root.style.setProperty("--opacity", `0%`);
     }
   })
 
-  change_video_index(0);
-  videos[0].play();
-
-  const hoverImage = document.getElementById('hover-image');
-  const gptQueries = document.querySelectorAll('.gpt-query');
-
-  gptQueries.forEach(query => {
-    query.addEventListener('mouseover', () => {
-      hoverImage.src = 'data/gpt_example/' + query.id + '.jpg';
-    });
-    query.addEventListener('mouseout', () => {
-      hoverImage.src = 'data/gpt_example/base.jpg';
-    });
-  });
-
+  showIframe(0);
+  updateOptions();
+  selectOption(optionsSets[current_iframe_idx][0], 0);
 }
 
-window.addEventListener('resize', resize_canvas, false);
-
-document.addEventListener("DOMContentLoaded", function() {
-  resize_canvas();
-});
-
-
 function slide_left() {
-  slider_window = document.getElementById('thumbnails-scroll');
-  slider_window.scrollLeft = 0;
+  if (current_iframe_idx - 1 < 0) {
+    current_iframe_idx = iframes[0].length - 1;
+    
+  } else {
+    current_iframe_idx = current_iframe_idx - 1;
+  }
+  showIframe(current_iframe_idx);
+  updateOptions();
+  selectOption(optionsSets[current_iframe_idx][0], 0);
 }
 
 function slide_right() {
-  slider_window = document.getElementById('thumbnails-scroll');
-  slider_window.scrollLeft += 1000;
+  if (current_iframe_idx + 1 > iframes[0].length - 1) {
+    current_iframe_idx = 0;
+  } else {
+    current_iframe_idx = current_iframe_idx + 1;
+  }
+  showIframe(current_iframe_idx);
+  updateOptions();
+  selectOption(optionsSets[current_iframe_idx][0], 0);
 }
+
+// Function to fade in an iframe
+function fadeIn(iframe) {
+  iframe.style.display = 'block'; // Ensure the iframe is visible
+  let opacity = 0;
+
+  // Gradually increase the opacity from 0 to 1 over time
+  const fadeInterval = setInterval(() => {
+    opacity += 0.05;
+    iframe.style.opacity = opacity.toFixed(1);
+    if (opacity >= 1) {
+      clearInterval(fadeInterval);
+      iframe.classList.add('show');
+    }
+  }, 20);
+}
+
+// document.getElementById('selected-option').textContent = 'Option 1';
+
+function updateOptions() {
+  const optionsMenu = document.getElementById('options-menu');
+  optionsMenu.innerHTML = ''; // Clear previous options
+
+  // Add new options based on the activeSet
+  optionsSets[current_iframe_idx].forEach((option, index) => {
+    const li = document.createElement('li');
+    li.textContent = option;
+
+    // Use a closure to capture the current index value
+    li.onclick = (function (opt, idx) {
+      return function () {
+        selectOption(opt, idx); // Pass the option and index here
+      };
+    })(option, index);
+
+    optionsMenu.appendChild(li);
+  });
+}
+
+function toggleDropdown(scene_name) {
+  const optionsMenu = document.getElementById('options-menu');
+  optionsMenu.classList.toggle('show');
+}
+
+function selectOption(option, idx) {
+  const selectedOptionText = document.getElementById('selected-option');
+  selectedOptionText.textContent = option;
+  selected_option = idx;
+  showIframe(current_iframe_idx);
+  // toggleDropdown();
+}
+
+// Close the dropdown menu when clicking outside of it
+window.addEventListener('click', function(event) {
+  const optionsMenu = document.getElementById('options-menu');
+  const dropdownBtn = document.querySelector('.dropdown-btn');
+
+  if (!event.target.matches('.dropdown-btn') && !event.target.matches('.arrow')) {
+    optionsMenu.classList.remove('show');
+  }
+});
+
 

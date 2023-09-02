@@ -138,7 +138,7 @@
             </h1>
             <br>
             <video id="main-video" autobuffer muted autoplay loop controls>
-                <source id="mp4" src="data/LERF-TOGO.mp4" type="video/mp4">
+                <source id="mp4" src="data/lerfdemotitle.mp4" type="video/mp4">
             </video>
             
             <!-- <section>
@@ -250,7 +250,7 @@
             <div class="base-row add-top-padding">
                 <h1 id="abstract">Abstract</h1>
                 <p class="paragraph">
-                    Grasping object by a specific part is often crucial for safety and for executing downstream tasks. 
+                    Grasping objects by a specific part is often crucial for safety and for executing downstream tasks. 
                     Yet, learning-based grasp planners lack this behavior unless they are trained on specific object part data, 
                     making it a significant challenge to scale object diversity. Instead, we propose LERF-TOGO, which uses vision-language 
                     models zero-shot to output a grasp distribution over an object given a natural language query. To accomplish this, 
@@ -273,16 +273,27 @@
                 <div class="base-row add-top-padding">
                     <!-- <h1 id="abstract">Interacting with LERF on hand-captured scenes</h1> -->
                     <h1 class="tldr">
-                        <b>Click the thumbnails below to load scenes, use ON/OFF to toggle between RGB and 3D relevancy
+                        <b>Click the thumbnails below to load scenes, use SEM/GEO to toggle between Semantic and Geometric grasps
                             videos.</b>
                     </h1>
-
                 </div>
 
-                <div id="main-results" onclick="play_pause()">
+                <!-- <div id="main-results">
                     <canvas id="canvas" width="960px" height="540px"></canvas>
                     <canvas id="canvas-overlay" width="960px" height="540px"></canvas>
-                </div>
+                </div> -->
+                <iframe id="colormug-black-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/colormugs_black_sem.viser" ></iframe>
+                <iframe id="colormug-white-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/colormugs_white_sem.viser" ></iframe>
+                <iframe id="colormug-blue-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/colormugs_blue_sem.viser" ></iframe>
+                <iframe id="colormug-black-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/colormugs_black_geo.viser" ></iframe>
+                <iframe id="colormug-white-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/colormugs_white_geo.viser" ></iframe>
+                <iframe id="colormug-blue-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/colormugs_blue_geo.viser" ></iframe>
+                
+                <iframe id="coords-ethernet-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/cords_ethernet_port_sem.viser"></iframe>
+                <iframe id="coords-ethernet-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/cords_ethernet_port_geo.viser"></iframe>
+                <iframe id="coords-cord-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/cords_power_cord_sem.viser.viser"></iframe>
+                <iframe id="coords-cord-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/cords_power_cord_geo.viser.viser"></iframe>
+
 
                 <div class="video-bar">
                     <div id="opacity-col" class="base-col viewer-bar">
@@ -292,25 +303,19 @@
                             <span class="labels" data-on="SEM" data-off="GEO"></span>
                         </label>
                     </div>
-                    <div class="base-col viewer-bar">
-                        <button id="play-btn" class="video-btn fa fa-lg fa-pause" onclick="play_pause()"></button>
+                    <div class="custom-dropdown base-col viewer-bar">
+                        <button class="dropdown-btn" onclick="toggleDropdown()">
+                          <span id="selected-option">Option 1</span>
+                          <span class="arrow">&#9660;</span>
+                        </button>
+                        <ul class="dropdown-menu" id="options-menu">
+                            <!-- Options will be dynamically populated based on the activeSet -->
+                        </ul>
                     </div>
                     <div class="base-col viewer-bar video-export">
                         <button class="video-btn fa fa-arrows-alt fa-lg" onclick="fullscreen()"></button>
-                        <button class="video-btn fa fa-download fa-lg" onclick="download()"></button>
                     </div>
                 </div>
-
-                <!-- <div class="base-row">
-                <h1 id="abstract">Interacting with LERF on hand-captured scenes</h1>
-                <p class="paragraph-center">
-                    Use ON/OFF to toggle between RGB renders and 3D relevancy maps!
-                </p>
-            </div> -->
-
-                <!-- <video id="main-video" autobuffer muted autoplay loop controls>
-                <source id="mp4" src="data/grid.mp4" type="video/mp4">
-            </video> -->
 
                 <div id="main-results" onclick="play_pause()">
                     <canvas id="canvas"></canvas>
@@ -325,40 +330,34 @@
                     <div class="base-row thumbnail-row" , id="thumbnails-scroll">
                         <div class="base-col thumbnail-col">
                             <button class="thumbnail-btn" id="thumb-0">
-                                <img src="data/thumbnails/blackmug_thumbnail.jpg" alt="paper" class="thumbnails" />
+                                <img src="data/thumbnails/blackmug_thumbnail.png" alt="paper" class="thumbnails" />
                                 Black Mug
                             </button>
                         </div>
-                        <!-- <div class="base-col thumbnail-col">
-                            <button class="thumbnail-btn" id="thumb-0">
-                                <img src="data/thumbnails/bouquet_thumbnail.jpg" alt="paper" class="thumbnails" />
-                                Bouquet
-                            </button>
-                        </div> -->
                         <div class="base-col thumbnail-col">
                             <button class="thumbnail-btn" id="thumb-1">
-                                <img src="data/thumbnails/figurines_thumbnail.jpg" alt="paper" class="thumbnails" />
+                                <img src="data/thumbnails/coords.png" alt="paper" class="thumbnails" />
                                 Figurines
                             </button>
                         </div>
-                        <div class="base-col thumbnail-col">
+                        <!-- <div class="base-col thumbnail-col">
                             <button class="thumbnail-btn" id="thumb-2">
                                 <img src="data/thumbnails/kitchen_thumbnail.jpg" alt="paper" class="thumbnails" />
                                 Kitchen
                             </button>
-                        </div>
-                        <div class="base-col thumbnail-col">
+                        </div> -->
+                        <!-- <div class="base-col thumbnail-col">
                             <button class="thumbnail-btn" id="thumb-3">
                                 <img src="data/thumbnails/donuts_thumbnail.jpg" alt="paper" class="thumbnails" />
                                 Donuts
                             </button>
-                        </div>
-                        <div class="base-col thumbnail-col">
+                        </div> -->
+                        <!-- <div class="base-col thumbnail-col">
                             <button class="thumbnail-btn" id="thumb-4">
                                 <img src="data/thumbnails/teatime_thumbnail.jpg" alt="paper" class="thumbnails" />
                                 Teatime
                             </button>
-                        </div>
+                        </div> -->
                         <div class="base-col thumbnail-col">
                             <button class="thumbnail-btn" id="thumb-5">
                                 <img src="data/thumbnails/bookstore_thumbnail.jpg" alt="paper" class="thumbnails" />
@@ -538,56 +537,16 @@
                 <!-- <div class="citation add-top-padding">
                     <h1 id="abstract"> Citation </h1>
                     <p> If you use this work or find it helpful, please consider citing: (bibtex) </p>
-                    <pre id="codecell0">@article{lerf2023,
+                    <!-- <pre id="codecell0">@article{lerf2023,
 &nbsp;author = {Place, holder},
 &nbsp;title = {LERF: Language Embedded Radiance Fields},
 &nbsp;journal = {arXiv preprint arXiv:2303.09553},
-&nbsp;year = {2023}, -->
-</pre>
+&nbsp;year = {2023},
+} </pre> -->
                 </div>
             </div>
         </div>
     </div>
-    <video id="blackmug" controls="false" loop autoplay muted class="videos" webkit-playsinline playsinline>
-        <!-- <source src="data/playback_webm/bouquet_concat.webm" type="video/webm"> -->
-        <source src="data/playback/black_mug_concat.mp4" type="video/mp4">
-    </video>
-    <!-- <video id="bouquet" controls="false" loop autoplay muted class="videos" webkit-playsinline playsinline>
-        <source src="data/playback_webm/bouquet_concat.webm" type="video/webm">
-        <source src="data/playback/bouquet_concat.mp4" type="video/mp4">
-    </video> -->
-    <video id="figurines" controls="false" loop muted class="videos" webkit-playsinline playsinline>
-        <source src="data/playback_webm/figurines_concat.webm" type="video/webm">
-        <source src="data/playback/figurines_concat.mp4" type="video/mp4">
-    </video>
-    <video id="kitchen" controls="false" loop muted class="videos" webkit-playsinline playsinline>
-        <source src="data/playback_webm/kitchen_concat.webm" type="video/webm">
-        <source src="data/playback/kitchen_concat.mp4" type="video/mp4">
-    </video>
-    <video id="donuts" controls="false" loop muted class="videos" webkit-playsinline playsinline>
-        <source src="data/playback_webm/donuts_concat.webm" type="video/webm">
-        <source src="data/playback/donuts_concat.mp4" type="video/mp4">
-    </video>
-    <video id="teatime" controls="false" loop muted class="videos" webkit-playsinline playsinline>
-        <source src="data/playback_webm/teatime_concat.webm" type="video/webm">
-        <source src="data/playback/teatime_concat.mp4" type="video/mp4">
-    </video>
-    <video id="bookstore" controls="false" loop muted class="videos" webkit-playsinline playsinline>
-        <source src="data/playback_webm/bookstore_concat.webm" type="video/webm">
-        <source src="data/playback/bookstore_concat.mp4" type="video/mp4">
-    </video>
-    <video id="grocery" class="videos" controls="false" loop muted webkit-playsinline playsinline>
-        <source src="data/playback_webm/veggieaisle_concat.webm" type="video/webm">
-        <source src="data/playback/veggieaisle_concat.mp4" type="video/mp4">
-    </video>
-    <video id="garden" class="videos" controls="false" loop muted webkit-playsinline playsinline>
-        <source src="data/playback_webm/sunnyside_concat.webm" type="video/webm">
-        <source src="data/playback/sunnyside_concat.mp4" type="video/mp4">
-    </video>
-    <video id="shoes" class="videos" controls="false" loop muted webkit-playsinline playsinline>
-        <source src="data/playback_webm/shoerack_concat.webm" type="video/webm">
-        <source src="data/playback/shoerack_concat.mp4" type="video/mp4">
-    </video>
 
     <script>
         const carousel = document.querySelector('.carousel-slider');
@@ -615,14 +574,6 @@
             // currentPosition = Math.min(currentPosition + 1, videoContainers.length - 1);
             carousel.scrollTo({ left: videoContainers[currentPosition].offsetLeft, behavior: 'smooth' });
         });
-  
-        // carousel.addEventListener('wheel', (event) => {
-        //   event.preventDefault();
-        //   const direction = event.deltaY > 0 ? 1 : -1;
-        //   currentPosition += direction;
-        //   currentPosition = Math.max(0, Math.min(currentPosition, videoContainers.length - 1));
-        //   carousel.scrollTo({ left: videoContainers[currentPosition].offsetLeft, behavior: 'smooth' });
-        // });
     </script>
 </body>
 </html>
