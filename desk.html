@@ -1,0 +1,484 @@
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FYQNRK8LHK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-FYQNRK8LHK');
+    </script>
+
+    <meta charset="utf-8" />
+    <title>LERF-TOGO</title>
+
+    <meta content="LERF-TOGO uses LERF and DINO features to find semantic grasps for language-specified tasks performing zero-shot semantic grasping."
+        name="description" />
+    <meta content="Language Embedded Radiance Fields for Zero-Shot Task-Oriented Grasping" property="og:title" />
+    <meta content="LERF-TOGO uses LERF and DINO features to find semantic grasps for language-specified tasks performing zero-shot semantic grasping."
+        name="description"
+        property="og:description" />
+    <meta content="https://lerf-togo.github.io/data/meta.jpg" property="og:image" />
+    <meta content="Language Embedded Radiance Fields for Zero-Shot Task-Oriented Grasping" property="twitter:title" />
+    <meta content="LERF-TOGO uses LERF and DINO features to find semantic grasps for language-specified tasks performing zero-shot semantic grasping."
+        name="description"
+        property="twitter:description" />
+    <meta content="https://lerf-togo.github.io/meta.png" property="twitter:image" />
+    <meta property="og:type" content="website" />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+
+
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+    <script
+        type="text/javascript">WebFont.load({ google: { families: ["Lato:100,100italic,300,300italic,400,400italic,700,700italic,900,900italic", "Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic", "Ubuntu:300,300italic,400,400italic,500,500italic,700,700italic", "Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic", "Changa One:400,400italic", "Varela Round:400", "Bungee Shade:regular", "Roboto:300,regular,500", "Bungee Outline:regular"] } });</script>
+    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="script.js" type="text/javascript"></script>
+
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+    <link href="data/favicon.png" rel="shortcut icon" type="image/x-icon" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="section">
+        <div class="container">
+            <div class="title-row">
+                <h1 class="title">LERF-TOGO</h1>
+                <h1 class="subheader">Language Embedded Radiance Fields for Zero-Shot Task-Oriented Grasping</h1>
+            </div>
+            <div class="base-row author-row">
+                <div class="base-col author-col">
+                    <a href="https://www.linkedin.com/in/adam-rashid-83a94a1b6/" target="_blank" class="author-text">
+                        Adam Rashid
+                        <span class="text-star">*</span>
+                    </a>
+                </div>
+                <div class="base-col author-col">
+                    <a href="https://www.linkedin.com/in/satvik-sharma1/" target="_blank" class="author-text">
+                        Satvik Sharma
+                        <span class="text-star">*</span>
+                    </a>
+                </div>
+                <div class="base-col author-col">
+                    <a href="https://chungmin99.github.io/" target="_blank" class="author-text">
+                        Chung Min Kim
+                    </a>
+                </div>
+                <div class="base-col author-col">
+                    <a href="https://kerrj.github.io/" target="_blank" class="author-text">
+                        Justin Kerr
+                    </a>
+                </div>
+                <div class="base-col author-col">
+                    <a href="https://yunliangchen.github.io/" target="_blank" class="author-text">
+                        Lawrence Chen
+                    </a>
+                </div>
+            </div>
+            <div class="base-row prof-row">
+                <div class="base-col prof-col">
+                    <a href="https://people.eecs.berkeley.edu/~kanazawa/" target="_blank" class="author-text">
+                        Angjoo Kanazawa
+                    </a>
+            </div>
+            <div class="base-col prof-col">
+                    <a href="https://goldberg.berkeley.edu/" target="_blank" class="author-text">
+                        
+                        Ken Goldberg
+                        <span class="superscript"></span>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h1 id="uc-berkeley">UC Berkeley</h1>
+                <!-- <br /> -->
+                <div id="equal_contrib">
+                    <span class="text-star">*</span>Denotes Equal Contribution
+                </div>
+            </div>
+            <div class="title-row">
+                <h2 class="subheader">CORL 2023 (Oral)</h1>
+            </div>
+            <div class="link-labels base-row">
+                <!-- TODO: Update arxiv link -->
+                <div class="base-col icon-col"><a href="https://arxiv.org/abs/2303.09553" target="_blank"
+                        class="link-block"><img
+                            src="https://uploads-ssl.webflow.com/51e0d73d83d06baa7a00000f/5cab99df4998decfbf9e218e_paper-01.png"
+                            alt="paper"
+                            sizes="(max-width: 479px) 12vw, (max-width: 767px) 7vw, (max-width: 991px) 41.8515625px, 56.6953125px"
+                            srcset="https://uploads-ssl.webflow.com/51e0d73d83d06baa7a00000f/5cab99df4998decfbf9e218e_paper-01-p-500.png 500w, https://uploads-ssl.webflow.com/51e0d73d83d06baa7a00000f/5cab99df4998decfbf9e218e_paper-01.png 672w"
+                            class="icon-img" /></a></div>
+                <!-- TODO: Update code link -->
+                <div class="base-col icon-col"><img
+                            src="https://uploads-ssl.webflow.com/51e0d73d83d06baa7a00000f/5cae3b53b42ebb3dd4175a82_68747470733a2f2f7777772e69636f6e66696e6465722e636f6d2f646174612f69636f6e732f6f637469636f6e732f313032342f6d61726b2d6769746875622d3235362e706e67.png"
+                            alt="paper" class="icon-img github-img-icon" /></a></div>
+                <!-- TODO: Update data link -->
+                <div class="column-2 base-col icon-col"><img
+                            src="https://uploads-ssl.webflow.com/51e0d73d83d06baa7a00000f/5e7136849ee3b0a0c6a95151_database.svg"
+                            alt="paper" class="icon-img data-img-icon" /></a></div>
+            </div>
+            <div class="link-labels base-row">
+                <div class="base-col icon-col">
+                    <strong class="link-labels-text">Paper</strong>
+                </div>
+                <div class="base-col icon-col">
+                    <strong class="link-labels-text" style="color: dimgrey;">&lt;/Code&gt; <br> coming soon</strong>
+                </div>
+                <div class="base-col icon-col">
+                    <strong class="link-labels-text" style="color: dimgrey;"    >Data <br> coming soon</strong>
+                </div>
+            </div>
+            <h1 class="tldr">
+                <b>TL;DR</b>:
+                LERF-TOGO uses LERF and DINO features to find semantic grasps for language-specified tasks performing zero-shot semantic grasping.
+            </h1>
+            <br>
+            <video id="main-video" autobuffer muted autoplay loop controls>
+                <source id="mp4" src="data/lerfdemotitle.mp4" type="video/mp4">
+            </video>
+            
+            <div class="base-row add-top-padding">
+                <h1 id="abstract">Experiments</h1>
+            </div>
+            <nav>
+                <div class="carousel-slider-wrapper">
+                    <div class = "carousel-slider">
+                        <div class="video-container">
+                            <video  loop playsinline muted autoplay>
+                                <source autoplay src="data/carousel/rose_plantstem.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="video-container">
+                            <video  loop playsinline muted autoplay>
+                                <source autoplay src="data/carousel/saucepan_pickplace.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="video-container">
+                            <video  loop playsinline muted autoplay>
+                                <source autoplay src="data/carousel/knob_twist.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="video-container">
+                            <video  loop playsinline muted autoplay>
+                                <source autoplay src="data/carousel/spacemouse_press.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="video-container">
+                            <video  loop playsinline muted autoplay>
+                                <source autoplay src="data/carousel/estop_press.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        
+                        <div class="video-container">
+                            <video  loop playsinline muted autoplay>
+                                <source autoplay src="data/carousel/saucepan_lid.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="video-container">
+                            <video  loop playsinline muted autoplay>
+                                <source autoplay src="data/carousel/saucepan_handle.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="video-container">
+                            <video  loop playsinline muted autoplay>
+                                <source autoplay src="data/carousel/wine_neck.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="video-container">
+                            <video  loop playsinline muted autoplay>
+                                <source autoplay src="data/carousel/corkscrew_handle.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="video-container">
+                            <video  loop playsinline muted autoplay>
+                                <source autoplay src="data/carousel/powerstrip_plug.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="video-container">
+                            <video  loop playsinline muted autoplay>
+                                <source autoplay src="data/carousel/powerstrip_base.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    <button class="carousel-button left" type="button">&lt;</button>
+                    <button class="carousel-button right" type="button">&gt;</button>
+                </div>
+            </nav>
+
+            <div class="base-row add-top-padding">
+                <h1 id="abstract">Abstract</h1>
+                <p class="paragraph">
+                    Grasping objects by a specific part is often crucial for safety and for executing downstream tasks. 
+                    Yet, learning-based grasp planners lack this behavior unless they are trained on specific object part data, 
+                    making it a significant challenge to scale object diversity. Instead, we propose LERF-TOGO, which uses vision-language 
+                    models zero-shot to output a grasp distribution over an object given a natural language query. To accomplish this, 
+                    we first reconstruct a Language Embedded Radiance Field (LERF) of the scene, which distills CLIP embeddings into 
+                    a multi-scale 3D language field queryable with text. However, LERF has no sense of objectness, meaning its 
+                    relevancy outputs often return incomplete activations over an object which are insufficient for subsequent 
+                    part queries. LERF-TOGO mitigates this lack of spatial grouping by extracting a 3D object mask via DINO features, 
+                    then conditionally querying LERF on this mask to obtain a grasp distribution over the object. 
+                    <!-- We evaluate \algabbr{}'s ability to grasp task-oriented parts on 31 different physical objects, 
+                    and find it selects grasps on the correct part in 81% of all trials and grasps successfully in 69%.  -->
+                </p>
+            </div>
+
+            <div>
+                <img id="splash-fig" src="data/splash.jpg" />
+            </div>
+
+            <div class="base-row">
+
+                <div class="base-row add-top-padding">
+                    <!-- <h1 id="abstract">Interacting with LERF on hand-captured scenes</h1> -->
+                    <h1 class="tldr">
+                        <b>Click the thumbnails below to load scenes, use SEM/GEO to toggle between Semantic and Geometric grasps
+                            videos.</b>
+                    </h1>
+                </div>
+
+                <!-- <div id="main-results">
+                    <canvas id="canvas" width="960px" height="540px"></canvas>
+                    <canvas id="canvas-overlay" width="960px" height="540px"></canvas>
+                </div> -->
+                <div id="iframe-container" class="iframe-container">
+                <iframe id="colormug-black-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/black_handle_sem.viser"></iframe>
+                <iframe id="colormug-white-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/white_handle_sem.viser" ></iframe>
+                <iframe id="colormug-blue-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/blue_handle_sem.viser" ></iframe>
+                <iframe id="colormug-pink-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/pink_handle_sem.viser" ></iframe>
+                <iframe id="colormug-teal-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/teal_handle_sem.viser" ></iframe>
+
+                <iframe id="colormug-black-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/black_handle_geo.viser" ></iframe>
+                <iframe id="colormug-white-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/white_handle_geo.viser" ></iframe>
+                <iframe id="colormug-blue-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/blue_handle_geo.viser" ></iframe>
+                <iframe id="colormug-pink-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/pink_handle_geo.viser" ></iframe>
+                <iframe id="colormug-teal-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/teal_handle_geo.viser" ></iframe>
+                
+                
+                <iframe id="coords-ethernet-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/ethernet_port_sem.viser"></iframe>
+                <iframe id="coords-ethernet-usb-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/ethernet_usb_sem.viser"></iframe>
+                <iframe id="coords-power-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/power_base_sem.viser"></iframe>
+                <iframe id="coords-power-plug-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/power_plug_sem.viser"></iframe>
+                
+                <iframe id="coords-ethernet-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/ethernet_port_geo.viser"></iframe>
+                <iframe id="coords-ethernet-usb-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/ethernet_usb_geo.viser"></iframe>
+                <iframe id="coords-power-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/power_base_geo.viser"></iframe>
+                <iframe id="coords-power-plug-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/power_plug_geo.viser"></iframe>
+
+
+                <iframe id="flowers-rose-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/rose_stem_sem.viser" ></iframe>
+                <iframe id="flowers-daisy-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/daisy_stem_sem.viser" ></iframe>
+                
+                <iframe id="flowers-rose-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/rose_stem_geo.viser" ></iframe>
+                <iframe id="flowers-daisy-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/daisy_stem_geo.viser" ></iframe>
+                
+                
+                <iframe id="tools-measuring-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/measuring_base_sem.viser" ></iframe>
+                <iframe id="tools-screwdriver-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/screwdriver_handle_sem.viser" ></iframe>
+                <iframe id="tools-wirecutter-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/wirecutter_handle_sem.viser" ></iframe>
+                <iframe id="tools-hammer-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/hammer_handle_sem.viser" ></iframe>
+                <iframe id="tools-solder-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/solder_handle_sem.viser" ></iframe>
+                
+                <iframe id="tools-measuring-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/measuring_base_geo.viser" ></iframe>
+                <iframe id="tools-screwdriver-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/screwdriver_handle_geo.viser" ></iframe>
+                <iframe id="tools-wirecutter-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/wirecutter_handle_geo.viser" ></iframe>
+                <iframe id="tools-hammer-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/hammer_handle_geo.viser" ></iframe>
+                <iframe id="tools-solder-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/solder_handle_geo.viser" ></iframe>
+
+
+                <iframe id="fragile-camera-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/camera_strap_sem.viser" ></iframe>
+                <iframe id="fragile-pinksunglasses-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/pinkglass_earhook_sem.viser" ></iframe>
+                <iframe id="fragile-bluesunglasses-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/blueglasses_earhooks_sem.viser" ></iframe>
+                <iframe id="fragile-lightbulb-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/lightbulb_screw_sem.viser" ></iframe>
+
+                <iframe id="fragile-camera-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/camera_strap_geo.viser" ></iframe>
+                <iframe id="fragile-pinksunglasses-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/pinkglass_earhook_geo.viser" ></iframe>
+                <iframe id="fragile-bluesunglasses-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/blueglasses_earhooks_geo.viser" ></iframe>
+                <iframe id="fragile-lightbulb-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/lightbulb_screw_geo.viser" ></iframe>
+
+
+                <iframe id="cooking-pan-handle-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/pan_handle_sem.viser" ></iframe>
+                <iframe id="cooking-pan-knob-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/pan_knob_sem.viser" ></iframe>
+                <iframe id="cooking-spice-lid-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/spice_lid_sem.viser" ></iframe>
+                <iframe id="cooking-spice-body-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/spice_body_sem.viser" ></iframe>
+                <iframe id="cooking-olive-cork-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/olive_cork_sem.viser" ></iframe>
+                <iframe id="cooking-olive-neck-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/olive_neck_sem.viser" ></iframe>
+
+                <iframe id="cooking-pan-handle-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/pan_handle_geo.viser" ></iframe>
+                <iframe id="cooking-pan-knob-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/pan_knob_geo.viser" ></iframe>
+                <iframe id="cooking-spice-lid-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/spice_lid_geo.viser" ></iframe>
+                <iframe id="cooking-spice-body-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/spice_body_geo.viser" ></iframe>
+                <iframe id="cooking-olive-cork-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/olive_cork_geo.viser" ></iframe>
+                <iframe id="cooking-olive-neck-geo" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/olive_neck_geo.viser" ></iframe>
+
+                </div>
+
+                <div class="video-bar">
+                    <div id="opacity-col" class="base-col viewer-bar">
+                        <label class="switch">
+                            <input type="checkbox" id="opacity-toggle" checked>
+                            <span class="slider"></span>
+                            <span class="labels" data-on="SEM" data-off="GEO"></span>
+                        </label>
+                    </div>
+                    <div class="custom-dropdown base-col viewer-bar">
+                        <button class="dropdown-btn" onclick="toggleDropdown()">
+                          <span id="selected-option">Option 1</span>
+                          <span class="arrow">&#9660;</span>
+                        </button>
+                        <ul class="dropdown-menu" id="options-menu">
+                            <!-- Options will be dynamically populated based on the activeSet -->
+                        </ul>
+                    </div>
+                    <div class="base-col viewer-bar video-export">
+                        <button class="video-btn fa fa-arrows-alt fa-lg" onclick="fullscreen()"></button>
+                    </div>
+                </div>
+
+                <div id="main-results" onclick="play_pause()">
+                    <canvas id="canvas"></canvas>
+                    <canvas id="canvas-overlay"></canvas>
+                </div>
+
+
+                <div class="base-row" style="display: inline-block">
+                    <button class="slide-arrow" id="slide-arrow-prev" onclick="slide_left()">
+                        &#8249;
+                    </button>
+                    <div class="base-row thumbnail-row" , id="thumbnails-scroll">
+                        <div class="base-col thumbnail-col">
+                            <button class="thumbnail-btn" id="thumb-0">
+                                <img src="data/thumbnails/blackmug_thumbnail.png" alt="paper" class="thumbnails" />
+                                Colorful Mugs
+                            </button>
+                        </div>
+                        <div class="base-col thumbnail-col">
+                            <button class="thumbnail-btn" id="thumb-1">
+                                <img src="data/thumbnails/coords.png" alt="paper" class="thumbnails" />
+                                Coord
+                            </button>
+                        </div>
+                        <div class="base-col thumbnail-col">
+                            <button class="thumbnail-btn" id="thumb-2">
+                                <img src="data/thumbnails/flowers.png" alt="paper" class="thumbnails" />
+                                Flowers
+                            </button>
+                        </div>
+                        <div class="base-col thumbnail-col">
+                            <button class="thumbnail-btn" id="thumb-3">
+                                <img src="data/thumbnails/tools.png" alt="paper" class="thumbnails" />
+                                Tools
+                            </button>
+                        </div>
+                        <div class="base-col thumbnail-col">
+                            <button class="thumbnail-btn" id="thumb-4">
+                                <img src="data/thumbnails/fragile.png" alt="paper" class="thumbnails" />
+                                Fragile Items
+                            </button>
+                        </div>
+                        <div class="base-col thumbnail-col">
+                            <button class="thumbnail-btn" id="thumb-5">
+                                <img src="data/thumbnails/cooking.png" alt="paper" class="thumbnails" />
+                                Cooking
+                            </button>
+                        </div>
+                    </div>
+                    <button class="slide-arrow" id="slide-arrow-next" onclick="slide_right()">
+                        &#8250;
+                    </button>
+                </div>
+                </div>
+
+                <div class="base-row add-top-padding">
+                    <h1>Why LERF?</h1>
+                    <p class="paragraph">
+                        LERF provides a dense, multi-scale 3D language field that can be queried zero-shot for long-tail objects. Since LERF 
+                        is trained on multi-scale CLIP features, it can support more granular language queries like those of object parts. Similarly to LERF, Conceptfusion 
+                        creates a dense, 3D language field, but it uses SAM masks which can struggle with granular queries.
+                    </p>
+                </div>
+
+                <img id="pipeline-img" src="data/TOGO.jpg" />
+                <img id="cf-img" src="data/cf_comparison.jpg" />
+
+                <div id="why-lerf">
+                    <h1> Why DINO?</h1>
+                    <p class="paragraph">
+                        LERF has no sense of objectness, meaning the activation maps returned by LERF  
+                        are sometimes incomplete or don't respect the object's geometric boundaries.
+                        This is can problematic as the object of interest might not be activated in a way that allows for fine-tuned part queries. LERF-TOGO mitigates this lack of spatial grouping by extracting a 3D object mask via DINO features.
+                        This object mask provides a region in which we can search for the part query.
+                    </p>
+
+                    <img id="pipeline-img" src="data/limitations_ablation.jpg" />
+
+                    <img id="pipeline-img" src="data/pipeline.jpg" />
+                </div>
+
+                <!-- <div class="highlight-none notranslate"><div class="highlight"><pre id="codecell0"><span></span>@article{nerfstudio,
+                <div class="citation add-top-padding">
+                    <h1 id="abstract"> Citation </h1>
+                    <p> If you use this work or find it helpful, please consider citing: (bibtex) </p>
+                    <pre id="codecell0">@article{lerf2023,
+                        &nbsp;author = {Place, holder},
+                        &nbsp;title = {LERF: Language Embedded Radiance Fields},
+                        &nbsp;journal = {arXiv preprint arXiv:2303.09553},
+                        &nbsp;year = {2023},
+                    } </pre>
+                </div>
+            </div>
+        </div> -->
+    </div>
+
+    		
+    <p style="text-align:left;font-size:small;padding: 1%;">
+        Source code for this page was taken from <a href="https://www.lerf.io/">LERF's website</a>. 
+    </p>
+  
+
+    <script>
+        const carousel = document.querySelector('.carousel-slider');
+        const videoContainers = document.querySelectorAll('.video-container');
+        let currentPosition = 0;
+  
+        const leftButton = document.querySelector('.carousel-button.left');
+        leftButton.addEventListener('click', () => {
+            if (currentPosition - 1 < 0) {
+                currentPosition = videoContainers.length - 1;
+            } else {
+                currentPosition = currentPosition - 1;
+            }
+            
+            carousel.scrollTo({ left: videoContainers[currentPosition].offsetLeft, behavior: 'smooth' });
+        });
+  
+        const rightButton = document.querySelector('.carousel-button.right');
+        rightButton.addEventListener('click', () => {
+            if (currentPosition + 1 > videoContainers.length - 1) {
+                currentPosition = 0;
+            } else {
+                currentPosition = currentPosition + 1;
+            }
+            // currentPosition = Math.min(currentPosition + 1, videoContainers.length - 1);
+            carousel.scrollTo({ left: videoContainers[currentPosition].offsetLeft, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
