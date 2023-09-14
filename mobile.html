@@ -218,8 +218,6 @@
                             </video>
                         </div>
                     </div>
-                    <button class="carousel-button left" type="button">&lt;</button>
-                    <button class="carousel-button right" type="button">&gt;</button>
                 </div>
             </nav>
 
@@ -254,10 +252,6 @@
                     </h1>
                 </div>
 
-                <!-- <div id="main-results">
-                    <canvas id="canvas" width="960px" height="540px"></canvas>
-                    <canvas id="canvas-overlay" width="960px" height="540px"></canvas>
-                </div> -->
                 <div id="iframe-container" class="iframe-container">
                     <iframe id="flowers-rose-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/phone_rose_stem_sem.viser" ></iframe>
                     <iframe id="flowers-daisy-sem" class="iframe" src="https://brentyi.github.io/viser-embed-test/?playbackPath=https://brentyi.github.io/viser-embed-test/trajectories/phone_daisy_stem_sem.viser" ></iframe>
@@ -282,18 +276,20 @@
                             <!-- Options will be dynamically populated based on the activeSet -->
                         </ul>
                     </div>
-                    <div class="base-col viewer-bar video-export">
+                    <!-- <div class="base-col viewer-bar video-export">
                         <button class="video-btn fa fa-arrows-alt fa-lg" onclick="fullscreen()"></button>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div id="main-results" onclick="play_pause()">
                     <canvas id="canvas"></canvas>
                     <canvas id="canvas-overlay"></canvas>
                 </div>
-                <p>
+                <h2>
+                    <b>
                     For more and higher quality scenes, load this site on computer!
-                </p>
+                    </b>
+                </h2>
                 <br>
                 <div class="base-row add-top-padding">
                     <h1>Why LERF?</h1>
@@ -340,34 +336,5 @@
     <p style="text-align:left;font-size:small;padding: 1%;">
         Source code for this page was taken from <a href="https://www.lerf.io/">LERF's website</a>. 
     </p>
-  
-
-    <script>
-        const carousel = document.querySelector('.carousel-slider');
-        const videoContainers = document.querySelectorAll('.video-container');
-        let currentPosition = 0;
-  
-        const leftButton = document.querySelector('.carousel-button.left');
-        leftButton.addEventListener('click', () => {
-            if (currentPosition - 1 < 0) {
-                currentPosition = videoContainers.length - 1;
-            } else {
-                currentPosition = currentPosition - 1;
-            }
-            
-            carousel.scrollTo({ left: videoContainers[currentPosition].offsetLeft, behavior: 'smooth' });
-        });
-  
-        const rightButton = document.querySelector('.carousel-button.right');
-        rightButton.addEventListener('click', () => {
-            if (currentPosition + 1 > videoContainers.length - 1) {
-                currentPosition = 0;
-            } else {
-                currentPosition = currentPosition + 1;
-            }
-            // currentPosition = Math.min(currentPosition + 1, videoContainers.length - 1);
-            carousel.scrollTo({ left: videoContainers[currentPosition].offsetLeft, behavior: 'smooth' });
-        });
-    </script>
 </body>
 </html>
