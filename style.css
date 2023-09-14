@@ -6,6 +6,7 @@ body {
     color: #333;
     font-size: 12px;
     line-height: 20px;
+    overflow-x: hidden;
 }
 
 .section {
@@ -83,7 +84,10 @@ body {
 
 .prof-row {
     height: 25px;
+    /* justify-content: center; */
+    display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .prof-col {
